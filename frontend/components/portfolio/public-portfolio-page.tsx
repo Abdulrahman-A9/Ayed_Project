@@ -44,6 +44,19 @@ function Reveal({ children, className = "", id }: { children: React.ReactNode; c
   );
 }
 
+function SectionDivider() {
+  return (
+    <div className="relative flex items-center justify-center py-2">
+      <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="relative z-10 flex items-center gap-2">
+        <span className="h-px w-12 bg-gradient-to-r from-transparent to-[var(--accent)]/50" />
+        <span className="h-1.5 w-1.5 rotate-45 rounded-sm bg-[var(--accent)] shadow-[0_0_8px_2px_rgba(241,164,82,0.45)]" />
+        <span className="h-px w-12 bg-gradient-to-l from-transparent to-[var(--accent)]/50" />
+      </div>
+    </div>
+  );
+}
+
 function SectionHeading({ eyebrow, title, copy }: { eyebrow: string; title: string; copy: string }) {
   return (
     <div className="max-w-2xl space-y-4">
@@ -239,8 +252,8 @@ export function PublicPortfolioPage({ portfolio }: { portfolio: PortfolioPayload
         </div>
       </section>
 
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-16 px-6 pb-20">
-        <Reveal id="about" className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-0 px-6 pb-20">
+        <Reveal id="about" className="grid gap-8 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <SectionHeading eyebrow="من نحن" title={portfolio.about_title} copy={portfolio.about_body} />
           <div className="section-shell rounded-[2rem] p-8">
             <div className="grid gap-6 sm:grid-cols-2">
@@ -261,7 +274,9 @@ export function PublicPortfolioPage({ portfolio }: { portfolio: PortfolioPayload
           </div>
         </Reveal>
 
-        <Reveal id="services" className="space-y-10">
+        <SectionDivider />
+
+        <Reveal id="services" className="space-y-10 py-16">
           <SectionHeading eyebrow="الخدمات" title={portfolio.services_title} copy="مُصمَّمة للعملاء الذين يتوقعون إنتاجاً جوياً متقناً وتشطيباً فاخراً وأثراً بصرياً لا يُنسى." />
           <div className="grid gap-5 lg:grid-cols-3">
             {portfolio.services.map((service, index) => (
@@ -283,7 +298,9 @@ export function PublicPortfolioPage({ portfolio }: { portfolio: PortfolioPayload
           </div>
         </Reveal>
 
-        <Reveal id="gallery" className="space-y-10">
+        <SectionDivider />
+
+        <Reveal id="gallery" className="space-y-10 py-16">
           <SectionHeading eyebrow="مكتبة الصور" title="معرض يمنحك شعوراً بالاتساع." copy="بلاطات الصور المحمّلة تدريجياً تحافظ على الأداء مع توفير تجربة تصفح فاخرة وسلسة." />
 
           {/* ── category filter ── */}
@@ -361,7 +378,9 @@ export function PublicPortfolioPage({ portfolio }: { portfolio: PortfolioPayload
           </div>
         </Reveal>
 
-        <Reveal id="films" className="space-y-10">
+        <SectionDivider />
+
+        <Reveal id="films" className="space-y-10 py-16">
           <SectionHeading eyebrow="مكتبة الأفلام" title="مشاهدة مباشرة بجودة كاملة." copy="تُبَثّ الفيديوهات مباشرةً من التخزين السحابي حتى يتمكن العملاء من تقييم الجودة الحقيقية للعمل دون ضغط أو تقليص." />
           <div className="grid gap-6 xl:grid-cols-2">
             {portfolio.videos.length > 0 ? (
@@ -393,7 +412,9 @@ export function PublicPortfolioPage({ portfolio }: { portfolio: PortfolioPayload
           </div>
         </Reveal>
 
-        <Reveal id="reviews" className="space-y-10">
+        <SectionDivider />
+
+        <Reveal id="reviews" className="space-y-10 py-16">
           <SectionHeading eyebrow="التقييمات" title="موثوق به من عملاء يُقدّرون الحرفية البصرية." copy="شهادات موجزة وذات مصداقية تمنح الصفحة ثقةً دون ازدحام في التجربة." />
           <div className="grid gap-5 lg:grid-cols-3">
             {portfolio.testimonials.map((testimonial) => (
@@ -423,7 +444,9 @@ export function PublicPortfolioPage({ portfolio }: { portfolio: PortfolioPayload
           </div>
         </Reveal>
 
-        <Reveal id="contact" className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+        <SectionDivider />
+
+        <Reveal id="contact" className="grid gap-8 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <div className="space-y-6">
             <SectionHeading eyebrow="تواصل معنا" title="حوّل الموقع القادم إلى لقطة بصرية لا تُنسى." copy="سيُخزَّن كل استفسار في لوحة التحكم مع إشعار بريدي فوري للحفاظ على تدفق احترافي من أول رسالة." />
             <div className="space-y-4 text-sm text-[var(--muted)]">
